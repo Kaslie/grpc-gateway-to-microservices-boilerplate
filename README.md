@@ -50,6 +50,11 @@ Example: `service_name` is `payment`
 4. Run `make deployment-grpc` or `make deployment-rest` on `calculator` directory
 
 ****
+Note: 
+This is not the best approach to enable your service support REST and GRPC. There's a new tools
+called [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) that enable reverse-proxy between REST and GRPC.
+I haven't research the tools yet. So I don't know whether it support `python`. 
+****
 ### Additional Resources:
 - [Set minikube ingress](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
 
