@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-server-dev-service-np
+  labels:
+    run: calculator-server-dev-service
+spec:
+  selector:
+    app: calculator-server-dev-service
+  type: NodePort
+  ports:
+    - name: calculator-server-dev-service-port
+      port: 5001
+      targetPort: 5001

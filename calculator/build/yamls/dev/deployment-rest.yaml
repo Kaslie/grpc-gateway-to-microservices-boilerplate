@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-server-dev
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: "calculator-server-dev-service"
+  template:
+    metadata:
+      labels:
+        app: "calculator-server-dev-service"
+    spec:
+      containers:
+      - name: "calculator-server"
+        image: "calculator-server:1.0.0"
+        command: ["python3", "application.py"]
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /health
+            port: 5001
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 20
+          successThreshold: 1
+          timeoutSeconds: 5
+        ports:
+          - containerPort: 5001
+        envFrom:
+          - configMapRef:
+              name: calculator-server-dev-configmap

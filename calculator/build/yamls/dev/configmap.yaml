@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  PORT: "5001"
+  COMMUNICATION_TYPE: "GRPC"
+  GRPC_MAX_WORKERS: "10"
+kind: ConfigMap
+metadata:
+  name: calculator-server-dev-configmap

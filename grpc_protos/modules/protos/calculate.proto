@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+
+message CalculateRequest {
+    int32 first_number = 1;
+    int32 second_number = 2;
+}
+
+message CalculateReply {
+    message Result {
+        int32 add = 1;
+        int32 multiply = 2;
+        int32 subtract = 3;
+        int32 division = 4;
+    }
+    Result result = 1;
+}
+
+message HealthCheckRequest {}
+message HealthCheckReply {}
+
+service Calculate {
+    rpc health_check(HealthCheckRequest) returns (HealthCheckReply) {};
+    rpc calculate(CalculateRequest) returns (CalculateReply) {};
+}

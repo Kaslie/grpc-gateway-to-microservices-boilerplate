@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  HOST: "0.0.0.0"
+  PORT: "5001"
+  CALCULATOR_HOST: "calculator-server-dev-service-np"
+  CALCULATOR_PORT: "5001"
+  CALCULATOR_COMMUNICATION_TYPE: "GRPC"
+
+kind: ConfigMap
+metadata:
+  name: flask-api-gateway-dev-configmap
